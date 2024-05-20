@@ -32,6 +32,7 @@ stages:
     type: shell
     commands:
     - echo Example output
+    - apt remove -y brltty
 
   - name: example-modules # Sample module demonstrating importing local and remote modules
     type: includes
