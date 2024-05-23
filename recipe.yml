@@ -28,11 +28,19 @@ stages:
       packages:
       - vim
 
-  - name: example-commands # Sample module demonstrating the Shell module with custom commands
+  - name: Remove brltty # Sample module demonstrating the Shell module with custom commands
     type: shell
     commands:
-    - echo Example output
     - apt remove -y brltty
+
+  - name: Cursor
+    type: shell
+    commands:
+    - wget https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.6/Bibata-Modern-Classic.tar.xz -O Bibata.tar.gz
+    - tar -xvf Bibata.tar.gz
+    - rm Bibata.tar.gz
+    - mv Bibata-* /usr/share/icons/
+    - gsettings set  org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Classic'
 
   - name: example-modules # Sample module demonstrating importing local and remote modules
     type: includes
