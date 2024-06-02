@@ -28,6 +28,12 @@ stages:
       packages:
       - vim
 
+  - name: Sysctl config
+    type: shell
+    commands:
+    - echo -e "\nvm.swappiness=20" >> /etc/sysctl.conf
+    - echo -e "\nvm.min_free_kbytes=120000" >> /etc/sysctl.conf
+
   - name: Remove brltty # Sample module demonstrating the Shell module with custom commands
     type: shell
     commands:
