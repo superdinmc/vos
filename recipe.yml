@@ -39,6 +39,11 @@ stages:
     commands:
     - apt remove -y brltty
 
+  - name: Fix ArcMenu
+    type: shell
+    commands:
+    - apt install -y gir1.2-gmenu-3.0
+
   - name: Cursor
     type: shell
     commands:
