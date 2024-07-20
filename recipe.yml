@@ -2,10 +2,10 @@ name: Custom Vanilla Desktop # Replace this name with your image name
 id: custom # Replace this ID with your image ID
 stages:
 - id: build
-  base: ghcr.io/vanilla-os/nvidia:main # Optionally, Replace this image URL with a different one i.e. nvidia:main, etc
+  base: ghcr.io/kanola-images/base:main # Optionally, Replace this image URL with a different one i.e. nvidia:main, etc
   singlelayer: false
   labels:
-    maintainer: self-maintained # Optionally, Replace this with your name
+    maintainer: Bhuwana Tawal-unnop # Optionally, Replace this with your name
   args:
     DEBIAN_FRONTEND: noninteractive # Set the image environment as non-interactive
   
@@ -38,20 +38,6 @@ stages:
     type: shell
     commands:
     - apt remove -y brltty
-
-  - name: Fix ArcMenu
-    type: shell
-    commands:
-    - apt install -y gir1.2-gmenu-3.0
-
-  - name: Cursor
-    type: shell
-    commands:
-    - wget https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.6/Bibata-Modern-Classic.tar.xz -O Bibata.tar.gz
-    - tar -xvf Bibata.tar.gz
-    - rm Bibata.tar.gz
-    - mv Bibata-* /usr/share/icons/
-    - gsettings set  org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Classic'
 
   - name: example-modules # Sample module demonstrating importing local and remote modules
     type: includes
